@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Grader</title>
+<style>
+    body {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        background-color: white;
+    }
+    .container {
+        max-width: 500px;
+        margin: 60px auto;
+        padding: 30px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+        text-align: center;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    input[type="number"] {
+        margin-bottom: 10px;
+        padding: 11px;
+        font-size: 17px;
+        border: 1px solid white;
+        border-radius: 5px;
+    }
+    input[type="submit"] {
+        padding: 10px;
+        font-size: 15px;
+        background-color: violet;
+        color: whitesmoke;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .output {
+        margin-top: 25px;
+        padding: 15px;
+        background-color: blue;
+        border-radius: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Student Grader</h2>
+    <form id="gradeForm">
+        <input type="number" id="score" placeholder="Enter score" required>
+        <input type="submit" value="Calculate">
+    </form>
+    <div class="output" id="output"></div>
+</div>
+
+<script>
+document.getElementById('gradeForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const score = parseInt(document.getElementById('score').value);
+    const grade = calculateGrade(score);
+    document.getElementById('output').innerText = "Grade: " + grade;
+});
+
+function calculateGrade(score) {
+    if (score >= 90) {
+        return 'A';
+    } else if (score >= 80) {
+        return 'B';
+    } else if (score >= 70) {
+        return 'C';
+    } else if (score >= 60) {
+        return 'D';
+    } else {
+        return 'E';
+    }
+}
+</script>
+
+</body>
+</html>
